@@ -31,9 +31,6 @@ int main()
     printf("The instructor of CIS424 Sec1 is:");
     printf("%s", cis424sec1->name);
     
-    delete cis424sec1;
-    printf("The instructor of CIS475 Sec50 is:");
-    printf("%s\n", cis475sec50->name);
-
     return 0;
 }
+
