@@ -1,0 +1,39 @@
+/****************************************************************************
+ * This is an example of aliasing
+ * It makes it convenient when two classes have the same instructor
+ * Remember: when one pointer change the content of the pointer
+ * another one also changes
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+struct instructor {
+    char* name;
+    char* email;
+};
+
+int main()
+{
+    
+    struct instructor* cis424sec1;
+    cis424sec1->name = "Yaling";
+    cis424sec1->email = "y.zheng65@csuohio.edu";
+    
+    struct instructor* cis475sec50;
+    cis475sec50 = cis424sec1;
+    
+    cis424sec1->name = "Alexandra";
+    printf("The instructor of CIS475 Sec50 is:");
+    printf("%s\n", cis475sec50->name);
+    
+    cis475sec50->name = "Harner";
+    printf("The instructor of CIS424 Sec1 is:");
+    printf("%s", cis424sec1->name);
+    
+    delete cis424sec1;
+    printf("The instructor of CIS475 Sec50 is:");
+    printf("%s\n", cis475sec50->name);
+
+    return 0;
+}
