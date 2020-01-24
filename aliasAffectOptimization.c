@@ -1,5 +1,5 @@
 /****************************************************************************
-With aliasing, we cannot do constant propogation
+With aliasing, we cannot do constant propogation - part of compilation optimization process
 
 *******************************************************************************/
 
