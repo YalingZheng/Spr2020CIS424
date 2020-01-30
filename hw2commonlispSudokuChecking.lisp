@@ -19,6 +19,11 @@
 ; print Row R is good. 
 ; else print Not A Sudoku solution. Row R does not contain nine different digits
 
+(setf firstRowDigits  (mapcar #'(lambda (x) (nth 0 x)) sudokudigits))
+(print firstRowDigits)
+
+; The result will be (1 4 7 5 8 2 3 6 9)
+
 ; hint - get nine numbers from each column and check whether it is 9 digits
 ; lambda function - for each element in sudokudigits, get its third element
 (setf thirdcoldigits (mapcar #'(lambda (x) (nth 2 x)) sudokudigits))
