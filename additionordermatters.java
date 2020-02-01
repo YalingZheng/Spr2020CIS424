@@ -3,11 +3,24 @@ import java.math.*;
 
 public class additionordermatters {
     public static void main(String[] args) {
-        double num1 = 2.6 + 3.9 + 1.3;
+        double num1 = (2.6 + 3.9) + 1.3;
         System.out.println(num1);
+        // output will be 7.8
         
         double num2 = 2.6 + (3.9 + 1.3);
         System.out.println(num2);
+        // output will be 7.80000000000001 
+        
+        // why they are different?
+        // because in the computer
+        // check here https://www.mathsisfun.com/binary-decimal-hexadecimal-converter.html
+        // decimal 2.6 will be in the binary format 10.100110011001100110011001100110011001100110011001100110011001
+        // decimal 3.9 will be in the binary format 11.111001100110011001100110011001100110011001100110011001100110
+        // decimal 7.8 will be in the binary format 111.110011001100110011001100110011001100110011001100110011001100
+        
+        // computer does the calculation using binary format, when double have a default precision level, it causes that
+        // different order (2.6 + 3.9) + 1.3 is different from 2.6 + (3.9 + 1.3)
+        
         
         System.out.println("Using BigDecimal");
         int scale = 32;
