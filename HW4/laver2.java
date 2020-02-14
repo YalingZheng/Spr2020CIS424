@@ -1,13 +1,21 @@
 
 public class laver2 {
 	
+	/* save the information of next Token*/
 	private String next_token = "";
+	/* save the information of next Lexeme */
 	private String next_lexeme = "";
+	/* save the information of partial or whole token */
 	private String memoryToken = "";
+	/* save the information of partial or whole lexeme*/
 	private String memoryLexeme = "";
+	/* this is the input string that is going to be analyzed */
 	private String s = "";
+	/* this is the current index of the analyzed input*/
 	private int sindex = 0;
+	/* this is the end index of the analyzed input*/
 	private int endindex = 0;
+	/* TRUE if an invalid token is read - e.g. 195abcmn is an invalid token*/
 	private boolean flag_invalid_token = false;
 	
 	laver2(){
@@ -19,6 +27,7 @@ public class laver2 {
 		endindex = s.length();
 	}
 	
+	/* Clear memory when one token is processed and prepare to scan next Token */
 	public void clearMemory() {
 		next_token = "";
 		next_lexeme = "";
@@ -26,9 +35,8 @@ public class laver2 {
 		memoryLexeme = "";
 	}
 	
-	
-	
-	/*New Method added, get next Token*/
+
+	/*get next character*/
 	public void getChar() {
 		//System.out.println("call getNextToken " + memoryToken + " " + memoryLexeme);
 		if (sindex >= endindex)
@@ -196,6 +204,11 @@ public class laver2 {
 		
 	}
 	
+	/* recursively scan characters until a token is recognized 
+	 * or it is the end of the input 
+	 * token content is saved in next_token
+	 * lexeme content is saved in next_lexeme 
+	 * */
 	public void computeNextToken() {
 		while ((!flag_invalid_token) && (sindex < endindex)) {
 		//for (int index=0; index<18; index++) {
@@ -209,7 +222,10 @@ public class laver2 {
 			}
 		}
 	
-
+	/* This is only for lexical analysis
+	 * recursively scan each character until
+	 * an invalid token shows up or the end of the string
+	 * */
 	public void analysis() {
 		while ((!flag_invalid_token) && (sindex < endindex)) {
 		//for (int index=0; index<18; index++) {
@@ -222,26 +238,32 @@ public class laver2 {
 			}
 		}
 	
+	/* get next_token */
 	public String getNextToken() {
 		return next_token;
 	}
 	
+	/*get next_lexeme */
 	public String getNextLexeme() {
 		return next_lexeme;
 	}
 	
+	/*if an invalid token is met*/
 	public boolean IsInvalidToken() {
 		return flag_invalid_token;
 	}
 	
+	/* get current index of the string */
 	public int getCurrentIndex() {
 		return sindex;
 	}
 	
+	/* get the end index of the string*/
 	public int getEndIndex() {
 		return endindex;
 	}
 	
+	/* get the input string (program, or sentence) */
 	public String getInputString() {
 		return s;
 	}
