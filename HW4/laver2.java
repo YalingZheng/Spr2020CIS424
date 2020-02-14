@@ -28,13 +28,13 @@ public class laver2 {
 	
 	
 	
-		/*New Method added, get next Token*/
-	public void getNextToken() {
+	/*New Method added, get next Token*/
+	public void getChar() {
 		//System.out.println("call getNextToken " + memoryToken + " " + memoryLexeme);
 		if (sindex >= endindex)
 			return;
 		char nextchar = s.charAt(sindex);
-		System.out.println("index is " + sindex + " next char is " + nextchar);
+		//System.out.println("index is " + sindex + " next char is " + nextchar);
 		switch (nextchar) {
 			case '+' : {
 						boolean flag = !(memoryToken.equals(""));
@@ -126,15 +126,25 @@ public class laver2 {
 			case '8':
 			case '9': {
 				// is the memory empty
-				if (memoryToken.contentEquals("")) {
+				if (memoryToken.equals("")) {
 					// first number
 					memoryToken = "INT_LITERAL";
 					memoryLexeme = "" + nextchar;
+					// if it is the end of the program, save it as next_token, next_lexeme
+					if (sindex >= endindex -1 ) {
+						next_token = memoryToken;
+						next_lexeme = memoryLexeme;
+					}
 					sindex++;
 					return;
 				}
 				else if (memoryToken.equals("INT_LITERAL")) {					
 					memoryLexeme += nextchar;
+					// if it is the end of the program, save it as next_token, next_lexeme
+					if (sindex >= endindex -1 ) {
+						next_token = memoryToken;
+						next_lexeme = memoryLexeme;
+					}
 					sindex++;
 					return;
 							
@@ -156,11 +166,21 @@ public class laver2 {
 					// first number									
 					memoryToken = "IDENTIFIER";
 					memoryLexeme = "" + nextchar;
+					// if it is the end of the program, save it as next_token, next_lexeme
+					if (sindex >= endindex -1 ) {
+						next_token = memoryToken;
+						next_lexeme = memoryLexeme;
+					}
 					sindex++;
 					return;
 				}				
 				else if (memoryToken.equals("IDENTIFIER")){					
 					memoryLexeme += nextchar;
+					// if it is the end of the program, save it as next_token, next_lexeme
+					if (sindex >= endindex -1 ) {
+						next_token = memoryToken;
+						next_lexeme = memoryLexeme;
+					}
 					sindex++;
 					return;
 				}
@@ -171,20 +191,59 @@ public class laver2 {
 				}						
 				
 			}	
-		} 
-	
+		} 	
+		
 		
 	}
 	
+	public void computeNextToken() {
+		while ((!flag_invalid_token) && (sindex < endindex)) {
+		//for (int index=0; index<18; index++) {
+			    getChar();
+				if (!next_token.equals("")) {
+					// we finish here
+					System.out.println("next token is " + next_token + " next lexeme is " + next_lexeme);
+					//clearMemory();		
+					return;
+				}
+			}
+		}
+	
+
 	public void analysis() {
 		while ((!flag_invalid_token) && (sindex < endindex)) {
 		//for (int index=0; index<18; index++) {
-			    getNextToken();
+			    getChar();
 				if (!next_token.equals("")) {
+					// we finish here
 					System.out.println("next token is " + next_token + " next lexeme is " + next_lexeme);
 					clearMemory();		
 				}
 			}
 		}
 	
+	public String getNextToken() {
+		return next_token;
+	}
+	
+	public String getNextLexeme() {
+		return next_lexeme;
+	}
+	
+	public boolean IsInvalidToken() {
+		return flag_invalid_token;
+	}
+	
+	public int getCurrentIndex() {
+		return sindex;
+	}
+	
+	public int getEndIndex() {
+		return endindex;
+	}
+	
+	public String getInputString() {
+		return s;
+	}
+
 }
