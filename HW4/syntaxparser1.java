@@ -2,7 +2,9 @@
 public class syntaxparser1 {
 
 	/**
-	 * Syntax rule is S - > <id> = <EXPR> <EXPR> -> <INT_LITERAL> * <INT_LITERAL>
+	 * Syntax rule is 
+	 * S - > <IDENTIFER> = <EXPR> 
+	 * <EXPR> -> <INT_LITERAL> * <INT_LITERAL>
 	 */
 	private laver2 la;
 	//private String inputstr;
