@@ -13,7 +13,7 @@ public class testlaver2 {
 		System.out.println("**********************************");
 		System.out.println();
 		
-		String s2 = "curnumber = 5.3 * 6;";
+		String s2 = "curnumber = 5.3 * 6;;;";
 		System.out.println("Lexical Anaysis result for " + s2);
 		laver2 la22 = new laver2(s2);
 		int endindex2 = s2.length();
