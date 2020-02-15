@@ -258,6 +258,10 @@ public class laver2 {
 		return sindex;
 	}
 	
+	public void setCurrentIndex(int curindex) {
+		this.sindex = curindex ;
+	}
+	
 	/* get the end index of the string*/
 	public int getEndIndex() {
 		return endindex;
