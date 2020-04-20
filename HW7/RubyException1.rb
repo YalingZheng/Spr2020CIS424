@@ -10,6 +10,7 @@ class Worker
           puts "Uh, server responded with #{response.status}"
         end
     end
+  end
 end
 
 puts "Hello World"
